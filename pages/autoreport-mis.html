@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css"/>
+    <script src="../js/jquery-easyui-1.5.2/jquery.min.js"></script>
+    <script src="../js/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="../js/jquery-easyui-1.5.2/themes/default/easyui.css" />
+    <link rel="stylesheet" href="../js/jquery-easyui-1.5.2/themes/icon.css" />
+    <script src="../js/jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="../css/base.css">
+    
+</head>
+<style>
+
+</style>
+
+<body>
+    <header class="mis-header">
+        <div class="container">
+            <div class="logo pull-left">
+                <img src="../images/logo-demo.png" alt="">
+                <span>YICHE BIGDATA MIS</span>
+            </div>
+            <ul class="header-right pull-right">
+                <li>
+                    <a href="javascript:;" class="user-info dropdown-toggle" data-toggle='dropdown'>
+                        <img id="userimage" alt="">
+                        <span id="username"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="easyui-layout" style="width:100%;height:100%">
+        <div data-options="region:'west',split:true" title="导航菜单" style="width:250px;">
+            <div id="menu" class="easyui-accordion" data-options="fit:true,border:false,nimate:true,lines:true">  
+            </div>  
+        </div>
+        <div data-options="region:'center'">
+        </div>
+    </div>
+</body>
+
+<script src='../js/home.js'></script>
+<!-- <script src='../js/autoreport-mis.js'></script> -->
+<script>
+    (function($, window, document, undefined) {
+        var menuarr = [];
+        console.log(1);
+        $.getJSON("../mockdata/menu-demo.json", function(data) {
+           
+            menuarr = data;
+            console.log("menuarr = ",menuarr);
+            $.each(data, function(index, item) {
+                if (index == 1) {
+                    $('#menu').accordion('add', {
+                        title: item['menu-name'],
+                        iconCls : 'fa fa-camera-retro fa-lg fa-fw',  
+                        selected: true,
+                        border:false,
+                       
+                        content: '<div style="padding:10px"><ul name="' + item['menu-name'] + '"></ul></div>',
+                    });
+
+                } else {
+                    $('#menu').accordion('add', {
+                        title: item['menu-name'],
+                        // iconCls : n.iconCls,  
+                        selected: false,
+                       
+                        content: '<div style="padding:10px"><ul name="' + item['menu-name'] + '"></ul></div>',
+                    });
+                }
+            })
+        })
+
+         //异步加载子节点，即二级菜单  
+        $('#menu').accordion({  
+            onSelect:function(title, index) {
+                console.log(menuarr[index]['menu-detail'])
+             
+                $.each(menuarr[index]['menu-detail'],function(index,item){
+                        console.log(index,item);
+                        console.log(item.text);
+                        console.log($("ul[name='"+title+"']"));
+                        $("ul[name='"+title+"']").accordion('add',{
+                        // title:item.text,
+                //         border:false,
+                //         collapsible:false,
+                        content:'<div style="padding:10px"><ul name="' + item.text + '"></ul></div>'
+
+                    })
+
+                })
+                
+                // $("ul[name='"+title+"']").tree({
+                //     data:menuarr[index]['menu-detail'],
+                //     onClick:function(node){
+                //         var url = node.attributes.url;
+                //         window.location.href = url;
+                //     }
+                // })
+            }  
+        });
+
+    })(jQuery, window, document)
+</script>
+
+</html>

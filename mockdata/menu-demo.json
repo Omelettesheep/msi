@@ -1,0 +1,71 @@
+[
+    {
+        "menu-name": "表格",
+        "menu-detail": [
+            {
+                "id": 1,
+                "text": "普通表格",
+                "iconCls": "icon-save",
+                "attributes": {
+                    "url": "../pages/t1.html",
+                    "price": 100
+                }
+            },
+            {
+                "id": 2,
+                "text": "斑纹表格",
+                "iconCls": "icon-save",
+                "attributes": {
+                    "url": "../pages/t2.html",
+                    "price": 100
+                }
+            }
+        ]
+    },
+     {
+        "menu-name": "表单",
+        "menu-detail": [
+            {
+                "id": 1,
+                "text": "普通表单",
+                "iconCls": "icon-save",
+                "attributes": {
+                    "url": "../pages/t1.html",
+                    "price": 100
+                }
+            },
+            {
+                "id": 2,
+                "text": "斑纹表单",
+                "iconCls": "icon-save",
+                "attributes": {
+                    "url": "../pages/t2.html",
+                    "price": 100
+                }
+            }
+        ]
+    },
+     {
+        "menu-name": "组件",
+        "menu-detail": [
+            {
+                "id": 1,
+                "text": "button",
+                "iconCls": "icon-save",
+                "attributes": {
+                    "url": "../pages/t1.html",
+                    "price": 100
+                }
+            },
+            {
+                "id": 2,
+                "text": "icon",
+                "iconCls": "icon-save",
+                "attributes": {
+                    "url": "../pages/t2.html",
+                    "price": 100
+                }
+            }
+        ]
+    }
+]

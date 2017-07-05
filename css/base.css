@@ -2,6 +2,12 @@ html,body{
 	height: 100%;
 	width: 100%;
 	color:white;
+    margin: 0;
+}
+
+
+h3{
+    margin: 0;
 }
 
 .form-group{
@@ -15,4 +21,49 @@ html,body{
 
 .form-group button{
 	padding: 10px 40px;
+}
+
+a{
+    color:white;
+}
+
+ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+
+.mis-header {
+    height: 50px;
+    background-color: #3c8dbc;
+    line-height: 50px;
+    overflow: hidden;
+}
+
+.mis-header .logo img {
+    vertical-align: middle;
+    max-height: 36px;
+}
+
+.mis-header .logo span {
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.mis-header .header-right li {
+    display: inline-block;
+}
+
+.mis-header .header-right a:hover {
+    text-decoration: none;
+    color: #18bc9c;
+}
+
+.mis-header .header-right li:hover {}
+
+.user-info img {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
 }
