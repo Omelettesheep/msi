@@ -16,7 +16,10 @@
     
 </head>
 <style>
+    .right-panel{
+        padding: 10px;
 
+    }
 </style>
 
 <body>
@@ -36,14 +39,44 @@
             </ul>
         </div>
     </header>
-    <div class="easyui-layout" style="width:100%;height:100%">
-        <div data-options="region:'west',split:true" title="导航菜单" style="width:250px;">
-            <div id="menu" class="easyui-accordion" data-options="fit:true,border:false,nimate:true,lines:true">  
-            </div>  
-        </div>
-        <div data-options="region:'center'">
+   <div class="easyui-layout" style="width:100%;height:100%">
+    <div data-options="region:'west',split:true" title="导航菜单" style="width:250px;">
+        <div id="menu" class="easyui-accordion" data-options="fit:true,border:false,nimate:true,lines:true">
         </div>
     </div>
+    <div data-options="region:'center'" class="right-panel">
+        <div class="col-md-6 col-md-offset-3 form-normal">
+            <div class="well well-lg">
+                 <form id="ff" method="post">
+                    <div>
+                        <label for="name">Name:</label>
+                        <input class="easyui-validatebox form-control" type="text" name="name" data-options="required:true" />
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input class="easyui-validatebox form-control" type="text" name="email" data-options="validType:'email'" />
+                    </div>
+                    <div>
+                        <label for="dept">combobox:</label>
+                        <select id="cc" class="easyui-combobox form-control" name="dept" style="width:200px;">
+                            <option value="aa">aitem1</option>
+                            <option>bitem2</option>
+                            <option>bitem3</option>
+                            <option>ditem4</option>
+                            <option>eitem5</option>
+                        </select>
+                    </div>
+                    
+                    <input type="text" class="easyui-numberbox" value="100" data-options="min:0,precision:2">
+                </form>
+               
+            </div>
+               
+            
+        </div>
+    </div>
+</div>
+
 </body>
 
 <script src='../js/home.js'></script>
@@ -60,7 +93,7 @@
                 if (index == 1) {
                     $('#menu').accordion('add', {
                         title: item['menu-name'],
-                        iconCls : 'fa fa-camera-retro fa-lg fa-fw',  
+                        iconCls : item['iconCls'],  
                         selected: true,
                         border:false,
                        
@@ -70,9 +103,8 @@
                 } else {
                     $('#menu').accordion('add', {
                         title: item['menu-name'],
-                        // iconCls : n.iconCls,  
+                        iconCls : item['iconCls'],  
                         selected: false,
-                       
                         content: '<div style="padding:10px"><ul name="' + item['menu-name'] + '"></ul></div>',
                     });
                 }
@@ -82,29 +114,14 @@
          //异步加载子节点，即二级菜单  
         $('#menu').accordion({  
             onSelect:function(title, index) {
-                console.log(menuarr[index]['menu-detail'])
-             
-                $.each(menuarr[index]['menu-detail'],function(index,item){
-                        console.log(index,item);
-                        console.log(item.text);
-                        console.log($("ul[name='"+title+"']"));
-                        $("ul[name='"+title+"']").accordion('add',{
-                        // title:item.text,
-                //         border:false,
-                //         collapsible:false,
-                        content:'<div style="padding:10px"><ul name="' + item.text + '"></ul></div>'
-
-                    })
-
+                console.log(menuarr[index]['menu-detail'])   
+                $("ul[name='"+title+"']").tree({
+                    data:menuarr[index]['menu-detail'],
+                    onClick:function(node){
+                        var url = node.attributes.url;
+                        window.location.href = url;
+                    }
                 })
-                
-                // $("ul[name='"+title+"']").tree({
-                //     data:menuarr[index]['menu-detail'],
-                //     onClick:function(node){
-                //         var url = node.attributes.url;
-                //         window.location.href = url;
-                //     }
-                // })
             }  
         });
 

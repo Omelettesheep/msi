@@ -1,0 +1,47 @@
+h1{
+    margin:0;
+}
+
+.main-header{
+    width: 100%;
+    height: 50px;
+    background: #319dca;
+    color:white;
+    line-height: 50px;
+}
+
+.main-header > a{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    float: left;
+    color: white;
+    background: #8acb6f;
+    display: none;
+}
+
+.main-header > a i{
+    font-size: 20px;
+}
+
+.main-header .title{
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+
+}
+
+.main-header .title h1{
+    font-size: 26px;
+}
+
+.main-header .user{
+    float: right;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.main-header .user:hover{
+}

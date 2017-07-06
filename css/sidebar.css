@@ -1,0 +1,85 @@
+html{
+    width: 100%;
+    height: 100%;
+
+}
+
+body{
+    width: 100%;
+    height: 100%;
+}
+ul{
+    margin:0;
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+li{
+    text-decoration: none;
+}
+a{
+    color:#394045;
+    text-decoration: none;
+}
+
+.main-sidebar{
+    width: 230px;
+    // position: absolute;
+    // left: 0;
+    // top:0;
+    float: left;
+    background-color: #F4F6F9; 
+    height: 100%;
+}
+
+.sidebar-head{
+    height: 50px;
+    line-height: 50px;
+    background-color: #6cbd4a;
+}
+
+.sidebar-head a{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+.sidebar-menu .header{
+    height: 30px;
+    background-color: #eee;
+    line-height: 30px;
+    text-align: center;
+}
+
+.sidebar-menu .treeview,.sidebar-menu .treeview-sub{
+    line-height: 40px;
+    padding-left: 54px;
+    font-size: 15px;
+}
+
+.sidebar-menu .treeview-sub{
+    display: none;
+    margin-left: -18px;
+    font-size: 14px;
+}
+
+.sidebar-menu .treeview a{
+    display: inline-block;
+    width: 100%;
+    
+    
+}
+
+.sidebar-menu .treeview a span{
+    display: inline-block;
+    width: 88px;
+    // font-size: 100%;
+}
+
+.sidebar-icon{
+    margin-right: 20px;
+}
