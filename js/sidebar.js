@@ -7,8 +7,8 @@
             "menu-icon":"glyphicon glyphicon-pencil",
             "children":[
                 {
-                    "menu-sub-name":"输入框",
-                    "url":"../pages/input.html"
+                    "menu-sub-name":"基础表单",
+                    "url":"../pages/autoReport-mis.html"
                 }
 
             ]
@@ -19,7 +19,7 @@
             "menu-icon":"glyphicon glyphicon-th",
             "children":[
                 {
-                    "menu-sub-name":"普通表格",
+                    "menu-sub-name":"基础表格",
                     "url":"../pages/normalTable.html"
                 }
 
@@ -67,6 +67,9 @@
     })
 
     $('.sidebar-head').on('click',function(){
+        $('.content').css('margin-left','0px');
         $('.main-sidebar').hide();
         $('.main-header>a').show();
+        $('.main-header').css('margin-left','0px');
+
     })

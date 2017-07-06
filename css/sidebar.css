@@ -25,10 +25,11 @@ a{
 
 .main-sidebar{
     width: 230px;
-    // position: absolute;
-    // left: 0;
-    // top:0;
-    float: left;
+    position: absolute;
+    left: 0;
+    top:0;
+    bottom: 0;
+    /*float: left;*/
     background-color: #F4F6F9; 
     height: 100%;
 }
