@@ -6,6 +6,7 @@
     <title>基础表格</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" href="../css/base.css"> -->
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
@@ -33,14 +34,32 @@
             <div class="title">
                 <h1>AutoReport-MIS</h1>
             </div>
+            <div class="user">
+                <div class="dropdown">
+                    <div class="dropdown-toggle user-action" id="dropdownMenu1" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-user"></i>
+                        桃太郎
+                        <span class="caret"></span>
+                    </div>
+                    <ul class="dropdown-menu text-right" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="../login.html">退出登录</a></li>
+                    </ul>
+                </div>
+            </div>
             <ul class="right-nav">
                 <li>
+                    <div class="dropdown">
+                        <div class="dropdown-toggle user-action" id="dropdownMenu1" data-toggle="dropdown">
+                            AutoReport
+                            <span class="caret"></span>
+                        </div>
+                        <ul class="dropdown-menu text-right" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AutoReport</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AutoTracking</a></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
-            <div class="user">
-                <i class="glyphicon glyphicon-user"></i>
-                <span>桃桃桃太郎</span>
-            </div>
             <div class="clearfix"></div>
         </header>
         <!-- 右边content信息 -->
@@ -52,15 +71,74 @@
                         普通表单
                     </div>
                     <div class="box-body">
-  
+                        <table class="table">
+                            <caption>Optional table caption.</caption>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="box box-info">
                     <div class="box-header">
-                        各种文本框
+                        条纹表格
                     </div>
                     <div class="box-body">
-
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -68,28 +146,121 @@
                 <div class="box box-danger">
                     <!-- Default panel contents -->
                     <div class="box-header">
-                        横向表单
+                        鼠标悬停
                     </div>
                     <div class="box-body">
-                
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Username</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="box box-warning">
                     <div class="box-header">
-                        Select框
+                        状态表格
                     </div>
                     <div class="box-body">
-                
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Column heading</th>
+                                    <th>Column heading</th>
+                                    <th>Column heading</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="active">
+                                    <th scope="row">1</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="success">
+                                    <th scope="row">3</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">4</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="info">
+                                    <th scope="row">5</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">6</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="warning">
+                                    <th scope="row">7</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">8</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                                <tr class="danger">
+                                    <th scope="row">9</th>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                    <td>Column content</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="box box-info">
+                <!-- <div class="box box-info">
                     <div class="box-header">
                         带ICON
                     </div>
                     <div class="box-body">
-
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 </body>

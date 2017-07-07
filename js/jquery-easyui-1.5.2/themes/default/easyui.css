@@ -9,29 +9,15 @@
 }
 .panel-header,
 .panel-body {
-  background-color: #374850;
   border-width: 1px;
-  // min-width: 250px;
-  // border-style: solid;
-}
-
-.panel-header:hover{
-  background-color: #1e282c;
-}
-
-.accordion .accordion-header:hover{
-  background-color: #1e282c;
+  border-style: solid;
 }
 .panel-header {
-
-  height: 44px;
   padding: 5px;
-  padding-left: 10px;
   position: relative;
 }
 .panel-title {
-  line-height: 33px;
-  // background: url('images/blank.gif') no-repeat;
+  background: url('images/blank.gif') no-repeat;
 }
 .panel-header-noborder {
   border-width: 0 0 1px 0;
@@ -62,7 +48,7 @@
   overflow: hidden;
 }
 .panel-icon {
-  left: 14px;
+  left: 5px;
   width: 16px;
 }
 .panel-tool {
@@ -82,7 +68,6 @@
   opacity: 1;
   filter: alpha(opacity=100);
   background-color: #eaf2ff;
-  // background-color:#222d32;
   -moz-border-radius: 3px 3px 3px 3px;
   -webkit-border-radius: 3px 3px 3px 3px;
   border-radius: 3px 3px 3px 3px;
@@ -128,27 +113,24 @@
 }
 .panel-header {
   background-color: #E0ECFF;
-  background-color:#222d32;
-  // background: -webkit-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
-  // background: -moz-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
-  // background: -o-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
-  // background: linear-gradient(to bottom,#EFF5FF 0,#E0ECFF 100%);
+  background: -webkit-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+  background: -moz-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+  background: -o-linear-gradient(top,#EFF5FF 0,#E0ECFF 100%);
+  background: linear-gradient(to bottom,#EFF5FF 0,#E0ECFF 100%);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF,endColorstr=#E0ECFF,GradientType=0);
 }
 .panel-body {
   background-color: #ffffff;
-  color: #b8c7ce;
+  color: #000000;
   font-size: 12px;
 }
 .panel-title {
-  // margin-left: 18px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
-  color: #b8c7ce;
-  height: 100%;
-  line-height: 33px;
-  padding-left: 28px;
+  color: #0E2D5F;
+  height: 16px;
+  line-height: 16px;
 }
 .panel-footer {
   border: 1px solid #95B8E7;
@@ -284,7 +266,7 @@
 .accordion {
   overflow: hidden;
   border-width: 1px;
-  // border-style: solid;
+  border-style: solid;
 }
 .accordion .accordion-header {
   border-width: 0 0 1px;
@@ -292,7 +274,6 @@
 }
 .accordion .accordion-body {
   border-width: 0 0 1px;
-  background-color: #374850;
 }
 .accordion-noborder {
   border-width: 0;
@@ -310,19 +291,18 @@
   background: url('images/accordion_arrows.png') no-repeat -16px 0;
 }
 .accordion {
-  background:rgb(34,45,50);
-  // background: #ffffff;
+  background: #ffffff;
   border-color: #95B8E7;
 }
 .accordion .accordion-header {
-  background: #222d32;
+  background: #E0ECFF;
   filter: none;
 }
 .accordion .accordion-header-selected {
-  background: #1e282c;
+  background: #ffe48d;
 }
 .accordion .accordion-header-selected .panel-title {
-  color: #b8c7ce;
+  color: #000000;
 }
 .accordion .panel-last > .accordion-header {
   border-bottom-color: #E0ECFF;
@@ -2906,10 +2886,9 @@
   padding: 0;
 }
 .tree-node {
-  height: 40px;
+  height: 18px;
   white-space: nowrap;
   cursor: pointer;
-  line-height: 40px;
 }
 .tree-hit {
   cursor: pointer;
@@ -2922,7 +2901,7 @@
 .tree-indent {
   display: inline-block;
   width: 16px;
-  height: 40px;
+  height: 18px;
   vertical-align: top;
   overflow: hidden;
 }
@@ -2992,7 +2971,7 @@
   white-space: nowrap;
   padding: 0 2px;
   height: 18px;
-  line-height: 40px;
+  line-height: 18px;
 }
 .tree-node-proxy {
   font-size: 12px;
@@ -3044,8 +3023,8 @@
   border-color: #95B8E7;
 }
 .tree-node-hover {
-  background: #1e282c;
-  // color: #000000;
+  background: #eaf2ff;
+  color: #000000;
 }
 .tree-node-selected {
   background: #ffe48d;

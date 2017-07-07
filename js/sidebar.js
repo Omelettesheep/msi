@@ -25,6 +25,42 @@
 
             ]
 
+        },
+        {
+            "menu-name":"数据网格",
+            "menu-icon":"glyphicon glyphicon-equalizer",
+            "children":[
+                {
+                    "menu-sub-name":"Datagrid",
+                    "url":"../pages/datagrid.html"
+                }
+
+            ]
+
+        },
+        {
+            "menu-name":"树形控件",
+            "menu-icon":"glyphicon glyphicon-tree-conifer",
+            "children":[
+                {
+                    "menu-sub-name":"Tree",
+                    "url":"../pages/tree.html"
+                }
+
+            ]
+
+        },
+        {
+            "menu-name":"charts图形",
+            "menu-icon":"glyphicon glyphicon-leaf",
+            "children":[
+                {
+                    "menu-sub-name":"charts图形库",
+                    "url":"../pages/chart-mis.html"
+                }
+
+            ]
+
         }
     ]
 

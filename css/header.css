@@ -56,9 +56,16 @@ h1{
 
 .main-header .user{
     float: right;
-    padding: 0 10px;
-    font-size: 16px;
+    // font-size: 16px;
+}
+
+.main-header .user  .user-action{
+    padding: 0 40px;
 }
 
 .main-header .user:hover{
+}
+
+.right-nav{
+    float: right;
 }

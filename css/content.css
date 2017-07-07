@@ -1,6 +1,7 @@
 .wrapper{
 	background-color: #eee;
 	position: relative;
+    overflow: hidden;
 }
 
 .wrapper:before,.wrapper:after{
@@ -70,3 +71,11 @@
 .box.box-info {
     border-top-color: #00c0ef;
 }
+
+.panel {
+    margin:0 auto;
+}
+
+.panel-body {
+    margin: 0 auto;
+ }
