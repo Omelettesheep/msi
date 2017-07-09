@@ -14,61 +14,13 @@
     <script src='../js/echarts.common.min.js'></script>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <!-- <link rel="stylesheet" href="../css/base.css"> -->
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/content.css">
-    <link rel="stylesheet" href="../css/datagrid.css">
+  
+    <link rel="stylesheet" href="../css/common.css">
 </head>
 
 <body>
     <div class="wrapper" style="height: auto; min-height: 100%;">
-        <!-- 左边导航 -->
-        <aside class="main-sidebar">
-            <div class="sidebar-head">
-                <a href="#">
-                    <i class="glyphicon glyphicon-menu-left"></i>
-                </a>
-            </div>
-            <ul class="sidebar-menu">
-            </ul>
-        </aside>
-        <!-- <div class="clearfix"></div> -->
-        <!-- 头部header -->
-        <header class="main-header">
-            <a href="#">
-                <i class="glyphicon glyphicon-menu-hamburger"></i>
-            </a>
-            <div class="title">
-                <h1>AutoReport-MIS</h1>
-            </div>
-            <div class="user">
-                <div class="dropdown">
-                    <div class="dropdown-toggle user-action" id="dropdownMenu1" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-user"></i> 桃太郎
-                        <span class="caret"></span>
-                    </div>
-                    <ul class="dropdown-menu text-right" role="menu" aria-labelledby="dropdownMenu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="../login.html">退出登录</a></li>
-                    </ul>
-                </div>
-            </div>
-            <ul class="right-nav">
-                <li>
-                    <div class="dropdown">
-                        <div class="dropdown-toggle user-action" id="dropdownMenu1" data-toggle="dropdown">
-                            AutoReport
-                            <span class="caret"></span>
-                        </div>
-                        <ul class="dropdown-menu text-right" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AutoReport</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">AutoTracking</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-            
-            <div class="clearfix"></div>
-        </header>
+        
         <!-- 右边content信息 -->
         <div class="content">
             <div class="col-md-6">
@@ -109,8 +61,14 @@
             
     </div>
 </body>
-<script src='../js/sidebar.js'></script>
-<script src='../js/header.js'></script>
+<script src='../components/header/header.js'></script>
+<script src='../components/sidebar/sidebar.js'></script>
+<script>
+$('.content').headerPlugin();
+$('.content').sidebarPlugin({
+    defaultIcon: 'glyphicon glyphicon-list-alt'
+});
+</script>
 <script>
 var pointPicConfig = {
     title : {

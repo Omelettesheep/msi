@@ -1,33 +1,33 @@
     [
         {
             "name":"AutoReport",
-            "image":"../images/1.jpg",
+           
             "info":"AutoReport is a bigdata blablablablablablabla"
         },
         {
             "name":"AutoTracking",
-            "image":"../images/2.jpg",
-            "info":"AutoReport is a bigdata blablablablablablabla"
+           
+            "info":"AutoTracking is a bigdata blablablablablablabla"
         },
         {
-            "name":"AutoReport",
-            "image":"../images/3.jpg",
-            "info":"AutoReport is a bigdata blablablablablablabla"
+            "name":"MyCar",
+           
+            "info":"MyCar is a bigdata blablablablablabla"
         },
         {
-            "name":"AutoReport",
-            "image":"../images/1.jpg",
-            "info":"AutoReport is a bigdata blablablablablablabla"
+            "name":"Project1",
+            
+            "info":"Project1 is a bigdata blablablablablablabla"
         },
         {
-            "name":"AutoReport",
-            "image":"../images/2.jpg",
-            "info":"AutoReport is a bigdata blablablablablablabla"
+            "name":"Project2",
+            
+            "info":"Project2 is a bigdata blablablablablablabla"
         },
         {
-            "name":"AutoReport",
-            "image":"../images/3.jpg",
-            "info":"AutoReport is a bigdata blablablablablablabla"
+            "name":"Project3",
+           
+            "info":"Project3 is a bigdata blablablablablablabla"
         }
 
     ]

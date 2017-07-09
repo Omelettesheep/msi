@@ -21,7 +21,7 @@
                 {
                     "menu-sub-name":"基础表格",
                     "url":"../pages/normalTable.html"
-                }
+                } 
 
             ]
 

@@ -5,27 +5,67 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="../js/jquery-easyui-1.5.2/jquery.min.js"></script>
-    <script src="../js/jquery-easyui-1.5.2/jquery.easyui.min.js"></script>
+    <script src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../js/jquery-easyui-1.5.2/themes/default/easyui.css" />
-    <link rel="stylesheet" href="../js/jquery-easyui-1.5.2/themes/icon.css" />
-    <script src="../js/jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <link rel="stylesheet" href="../css/base.css">
+   
+    <link rel="stylesheet" href="../css/common.css">
 </head>
 <style>
+.mis-header {
+    height: 50px;
+    background-color: #3c8dbc;
+    line-height: 50px;
+    /*overflow: hidden;*/
+    color: white;
+}
+.mis-header .logo{
+    margin-left: 40px;
+    line-height: 50px;
+    height: 50px;
+}
+.mis-header .logo img {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 36px;
+}
 
+.mis-header .logo h1{
+   margin-top: 10px;
+   display: inline-block;
+   margin-left: 30px;
+}
 
-.box-content {
+.mis-header .header-right li {
+    display: inline-block;
+}
+
+.mis-header .header-right a:hover {
+    text-decoration: none;
+    color: #18bc9c;
+}
+
+.mis-header .header-right li:hover {}
+
+.user-info img {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+}
+
+.mis-list-container {
     background-color: #eee;
     height: 100%;
-    width: 100%;
     padding-top: 40px;
 }
 
-.box-content ul{
+.mis-list-container ul{
     position: relative;
+}
+.thumbnail{
+    border-top: 5px solid green;
+}
+.thumbnail .caption  h3{
+    padding: 10px 0;
 }
 
 .thumbnail .caption {
@@ -35,6 +75,10 @@
     box-shadow: 0 0 5px #ddd
 }
 
+.thumbnail .entry{
+    width: 100%;
+}
+
 .thumbnail img {
     margin-top: 10px;
     width: 100px;
@@ -42,7 +86,7 @@
     border-radius: 50%;
 }
 
-.test:after{
+.mis-list:after{
     display: block;
     content: "";
     clear: both;
@@ -51,31 +95,75 @@
 
 
 </style>
-
 <body>
-    <header class="mis-header">
-        <div class="container">
-            <div class="logo pull-left">
-                <img src="../images/logo-demo.png" alt="">
-                <span>YICHE BIGDATA MIS</span>
+    <div class="wrapper">
+         <header class="mis-header">
+           
+                <div class="logo pull-left">
+                    <img src="../images/logo-demo.png" alt="">
+                    <h1>YICHE BIGDATA MIS</h1>
+                </div>
+                <div class="user">
+                    <div class="dropdown">
+                        <div class="dropdown-toggle user-action" id="dropdownMenu1" data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-user"></i>
+                                <span id="username"></span>
+                            <span class="caret"></span>
+                        </div>
+                        <ul class="dropdown-menu text-right" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="../login.html">退出登录</a></li>
+                        </ul>
+                    </div>
+                </div>
+           
+        </header>
+        <div class="mis-list">
+            <div class="container mis-list-container">
+                <ul class="mis-box">
+                    
+                </ul>
             </div>
-            <ul class="header-right pull-right">
-                <li>
-                    <a href="javascript:;" class="user-info dropdown-toggle" data-toggle='dropdown'>
-                        <img id="userimage" alt="">
-                        <span id="username"></span>
-                    </a>
-                </li>
-            </ul>
         </div>
-    </header>
-    <div class="test">
-        <div class="container box-content">
-            <ul id="box">
-            </ul>
-        </div>
-    </div>
         
+    </div>
 </body>
-<script src = '../js/home.js'></script>
+<script>
+    ;
+(function($, window, document, undefined) {
+    var user = {};
+    var li_str = ""
+    var username = window.localStorage.getItem('misUserName');
+    $('#username').html(username);
+    $('.mis-box').on('click','.entry',function(){
+        console.log($(this).parent().parent().children('h3').html())
+        if(window.localStorage){
+            var dst = $(this).parent().parent().children('h3').html();
+            window.localStorage.setItem('misSystemName',dst+'-MIS')
+        }
+    })
+
+    $.getJSON("../mockdata/homedata.json", function(data) {
+        $.each(data, function(index, item) {
+            li_str += '<li class="msi-box col-md-3">' +
+                '<div class="thumbnail">' +
+                '<img src="' + (item.image?item.image:"../images/default.jpg") + '" alt="...">' +
+                '<div class="caption">' +
+                '<h3>' + item.name + '</h3>' +
+                '<p>' + item.info + '</p>' +
+                '<p><a href="'+(item.url?item.url:(item.name).toLowerCase()+'-mis.html')+'" class="btn btn-primary entry" role="button">进入mis</a>' +
+                '</p>' +
+                '</div>' +
+                '</div>' +
+                '</li>';
+
+        })
+        $('.mis-box').html($(li_str));
+    })
+
+
+})(jQuery, window, document)
+
+</script>
+
+<!-- <script src = '../js/home.js'></script> -->
 </html>

@@ -1,0 +1,421 @@
+html,body{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+.wrapper{
+	height: auto;
+	min-height: 100%;
+	background-color: #eee;
+	position: relative;
+    overflow: hidden;
+}
+.wrapper:before,.wrapper:after{
+	content: " ";
+	display: table;
+}
+.wrapper:after{
+	clear: both;
+}
+
+ul{
+    margin:0;
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+li{
+    text-decoration: none;
+}
+
+a{
+    color:#394045;
+    text-decoration: none;
+}
+
+h1{
+    font-size: 26px;
+}
+
+h3{
+    margin: 0;
+}
+
+h2{
+    font-size: 36px;
+}
+
+.bgpic .form-group{
+    margin-top: 20px;
+}
+
+.bgpic .form-group:last-child{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.bgpic .form-group button{
+    padding: 10px 40px;
+}
+
+.bgpic a{
+    color:white;
+}
+
+.bgpic{
+    background-image: url(../images/banner-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100%;
+    height: auto;
+    padding: 130px 0 0;
+}
+
+.bgpic .white-background-overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    opacity: 0.3;
+}
+
+.login-content{
+    background-color: rgba(0,0,0,0.4);
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.login-content:hover{
+    box-shadow: 0 0 2px black ;
+}
+
+.bgpic  h2{
+    padding-bottom: 20px;
+     color: white;
+}
+
+.bgpic .form-group label{
+    font-size: 12px;
+     color: white;
+}
+
+
+.main-sidebar{
+    width: 230px;
+    position: absolute;
+    left: 0;
+    top:0;
+    bottom: 0;
+    /*float: left;*/
+    background-color: #F4F6F9; 
+    height: 100%;
+}
+
+.sidebar-head{
+    height: 50px;
+    line-height: 50px;
+    background-color: #6cbd4a;
+}
+
+.sidebar-head a{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+
+.sidebar-menu .header{
+    height: 30px;
+    background-color: #eee;
+    line-height: 30px;
+    text-align: center;
+}
+
+.sidebar-menu .treeview,.sidebar-menu .treeview-sub{
+    line-height: 40px;
+    padding-left: 40px;
+    font-size: 15px;
+
+}
+
+.sidebar-menu .treeview-sub{
+    display: none;
+    margin-left: -18px;
+    font-size: 14px;
+}
+
+.sidebar-menu .floor-2{
+	margin-left: -10px;
+	font-size: 14px;
+	display: none;
+}
+
+.sidebar-menu .floor-3{
+	margin-left: -10px;
+	font-size: 12px;
+	display: none;
+}
+
+/*.treeview[name^='2-']{
+	margin-left: -10px;
+	font-size: 14px;
+}
+
+.treeview[name^='3-']{
+	margin-left: -10px;
+	font-size: 12px;
+}*/
+.sidebar-menu .treeview a{
+    display: inline-block;
+    width: 100%;
+    
+    
+}
+
+.sidebar-menu .treeview a span{
+    display: inline-block;
+    width: 88px;
+    // font-size: 100%;
+    margin-left: 20px;
+}
+
+.sidebar-icon{
+    /*margin-right: 20px;*/
+}
+
+.right-icon{
+	display: block;
+	float: right;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+
+
+h1{
+    margin:0;
+}
+
+.main-header{
+    /*width: 100%;*/
+    height: 50px;
+    background: #319dca;
+    color:white;
+    line-height: 50px;
+    margin-left: 230px;
+    transition: margin-left .3s ease-in-out;
+}
+
+.right-nav {
+    float: right;
+}
+
+.right-nav a{
+	display: inline-block;
+	line-height: 50px;
+	height:50px;
+	color: white;
+	padding: 0 10px;
+}
+
+.right-nav a i{
+	padding-right: 10px;
+}
+
+.right-nav a:hover,.user:hover{
+	background-color: #0099FF;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+.main-header:after{
+    content: " "
+    display: block;
+    clear: both;
+}
+
+.main-header > a{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    float: left;
+    color: white;
+    background: #8acb6f;
+    display: none;
+}
+
+.main-header > a i{
+    font-size: 20px;
+}
+
+.main-header .title{
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+
+}
+
+.main-header .title h1{
+    font-size: 26px;
+}
+
+ .user{
+    float: right;
+    // font-size: 16px;
+}
+
+ .user  .user-action{
+    padding: 0 40px;
+}
+
+ .user  .user-action i{
+    padding-right: 10px;
+}
+
+ .user:hover{
+}
+
+.right-nav{
+    float: right;
+}
+
+.caret{
+	margin-left: 10px;
+}
+
+.content{
+    /*width: 100%;*/
+    margin-left: 230px;
+    margin-top: 30px;
+    height: 100%;
+    background: #eee;
+}
+.clearfix{
+	clear: both;
+}
+
+.box{
+	position: relative;
+    border-radius: 3px;
+    background: #ffffff;
+    border-top: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.box-danger{
+	border-top-color: #dd4b39;
+}
+
+.box-header {
+    color: #444;
+    display: block;
+    padding: 10px;
+    position: relative;
+}
+
+.box-body {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+}
+
+.box-header:before, .box-body:before, .box-footer:before, .box-header:after, .box-body:after, .box-footer:after {
+    content: " ";
+    display: table;
+}
+
+.box-header:after, .box-body:after, .box-footer:after {
+    clear: both;
+}
+
+.box.box-success {
+   border-top-color: #00a65a;
+}
+.box.box-warning {
+    border-top-color: #f39c12;
+}
+
+.box.box-info {
+    border-top-color: #00c0ef;
+}
+
+.panel {
+    margin:0 auto;
+}
+
+.panel-body {
+    margin: 0 auto;
+ }
+
+ .datagrid-header-inner{
+    float:none;
+    width: 100%;
+}
+
+.m-datagrid{
+    width: 100%;
+}
+
+.tabs{
+    background-color: white;
+    /*height: 100vh;*/
+    margin-bottom: 20px;
+}
+
+.nav-tabs {
+    margin-top: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabs-container {
+    overflow: hidden;
+    /*margin: auto;*/
+}
+
+.tabs{
+    /*border-style: none;*/
+}
+
+.tabs li a.tabs-inner{
+    background: white;
+    border-bottom: none;
+}
+.tabs-header, .tabs-tool {
+    background:none;
+}
+.tabs-header, .tabs-scroller-left, .tabs-scroller-right, .tabs-tool, .tabs, .tabs-panels, .tabs li a.tabs-inner, .tabs li.tabs-selected a.tabs-inner, .tabs-header-bottom .tabs li.tabs-selected a.tabs-inner, .tabs-header-left .tabs li.tabs-selected a.tabs-inner, .tabs-header-right .tabs li.tabs-selected a.tabs-inner {
+    border-color: #ddd;
+}
+
+.tabs li.tabs-selected a.tabs-inner{
+    background: #f39c12;
+    color: white;
+}
+
+.test{
+    padding: 10px;
+
+}
+
+.test li{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.test li:hover{
+    background: white;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>header-sidebar-demo</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js'></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="header-sidebar.css">
+</head>
+<body>
+	<div class="wrapper">
+		<div class="content">
+			<div class="col-md-3">
+				<div class="box box-success">
+					<div class="box-head">
+						这是头
+					</div>
+					<div class="box-body">
+						这是身体
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script src='header-sidebar.js'></script>
+<script>
+// $('.upload').upload(settings);
+	$('.content').headerSidebar({
+		userName:'yy',
+		systemName:'AutoReport系统',
+		defaultIcon:'glyphicon glyphicon-list-alt'
+	});
+</script>
+
+</html>

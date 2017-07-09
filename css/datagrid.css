@@ -1,15 +1,3 @@
-// .datagrid-header-row{
-//     width: 100%;
-// }
-
-// .datagrid-htable{
-//     width: 100%;
-// }
-
-// .datagrid-htable{
-//     width: 100%;
-// }
-
 .datagrid-header-inner{
     float:none;
     width: 100%;
@@ -18,6 +6,3 @@
 .m-datagrid{
     width: 100%;
 }
-// .datagrid-htable, .datagrid-btable, .datagrid-ftable {
-//     width: 100%;
-// }
