@@ -2,6 +2,7 @@
 (function($,window,document,undefined){
 	var myPluginName = 'headerPlugin';
 
+
 	var defaults = {
 		defaultIcon:'glyphicon glyphicon-tasks',
 		userName:(function(){

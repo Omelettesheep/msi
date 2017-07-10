@@ -419,3 +419,13 @@ h1{
 .test li:hover{
     background: white;
 }
+
+.textbox{
+    margin-right: 10px;
+}
+
+.city{
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}

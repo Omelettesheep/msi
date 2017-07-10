@@ -158,12 +158,20 @@
                         </form>
                     </div>
                 </div>
-                <div class="box box-warning">
+                <div class="box box-warning city-box">
                     <div class="box-header">
                         城市三联动
                     </div>
                     <div class="box-body">
-
+                   <!--  <div class="city">
+                        <label for="province">省</label>
+                        <input id="province" name="province" />
+                        <label for="city">市</label>
+                        <input id="city" name="city" />
+                        <label for="area">区</label>
+                        <input id="area" name="area" />
+                    </div> -->
+<!-- 
                         省 <input id="sheng" style="width: 200px" class="easyui-combobox"
                             data-options="missingMessage:'请选择省份',
                             data:data1,
@@ -193,7 +201,7 @@
                             textField:'qu',
                             onSelect:function(area){
                                 console.log($('#sheng').val()+','+$('#shi').val()+','+area.qu+',')
-                            }"/>
+                            }"/> -->
                     </div>
                 </div>
             </div>
@@ -201,10 +209,12 @@
 </body>
 <script src='../components/header/header.js'></script>
 <script src='../components/sidebar/sidebar.js'></script>
+<script src='../components/cityquery/cityquery.js'></script>
 
 
 
 <script>
+$('.city-box').cityQueryPlugin();
 $('.content').headerPlugin();
 $('.content').sidebarPlugin({
     defaultIcon:'glyphicon glyphicon-list-alt'

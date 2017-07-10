@@ -36,7 +36,8 @@
                                 </ul>
                                 
                             </div>
-                            <div class="easyui-tabs" data-options="tabWidth:100,tabHeight:40" style="width:900px;height:500px" id="tab1">
+                            <div class="rightTabs" style="margin-left: 210px">
+                                <div class="easyui-tabs" data-options="tabWidth:100,tabHeight:40" style=";height:500px" id="tab1">
                                <!--  <div title="Home" style="padding:10px">
                                     <p>Home Content.</p>
                                 </div>
@@ -53,6 +54,8 @@
                                     <p>References Content.</p>
                                 </div> -->
                             </div>
+                            </div>
+                            
                         </div>
                     </div>
             </div>
@@ -61,34 +64,58 @@
 </body>
 <script src='../components/header/header.js'></script>
 <script src='../components/sidebar/sidebar.js'></script>
+
 <script>
 $('.content').headerPlugin();
 $('.content').sidebarPlugin({
     defaultIcon: 'glyphicon glyphicon-list-alt'
 });
+
 </script>
 <script>
+    $(window).resize(function () {  
+         $('#tab1').tabs({  
+             width: $("#tab1").parent().width(),  
+         });  
+     })
+    var tabList2 = ['Home','Maps','Journal','History'];
+    $.each(tabList2,function(index,item){
+        console.log(item);
+        $('#tab1').tabs({
+            width:$(".easyui-tabs").parent().width()
+        })
+        $('#tab1').tabs('add',{
+            title:item,
+            tabHeight:40,
+            content:"<span>这是"+item+"</span>",
+            iconCls:'glyphicon glyphicon-list-alt'
 
-    $('.test').on('click','li',function(){
-        var title = $(this).html();
-        
-        if($('#tab1').tabs('getTab',title)){ 
-            $('#tab1').tabs('select',title)
-        }
-        else{
-            $('#tab1').tabs('add',{
-                title:title,
-                tabHeight:40,
-                closable:true,
-                content:"<span>这是"+title+"</span>",
-                selected:true,
-                id:title,
-                iconCls:'glyphicon glyphicon-list-alt'
-            })
-        }
+        })
 
     })
 
+    // $('.test').on('click','li',function(){
+    //     var title = $(this).html();
+    //     $('#tab1').tabs({
+    //         width:$(".easyui-tabs").parent().width()
+    //     })
+        
+    //     if($('#tab1').tabs('getTab',title)){ 
+    //         $('#tab1').tabs('select',title)
+    //     }
+    //     else{
+    //         $('#tab1').tabs('add',{
+    //             title:title,
+    //             tabHeight:40,
+    //             closable:true,
+    //             content:"<span>这是"+title+"</span>",
+    //             selected:true,
+    //             id:title,
+    //             iconCls:'glyphicon glyphicon-list-alt'
+    //         })
+    //     }
+
+    // })
 
     $('#tt').tabs({
         tabHeight: 40,
@@ -96,6 +123,7 @@ $('.content').sidebarPlugin({
             // alert(title+' is selected');
         }
     });
+    
 
     $('#tt').tabs('add', {
         title: 'new tab',

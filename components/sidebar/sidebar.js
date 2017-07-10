@@ -165,6 +165,7 @@
 			this.getMenu(this.settings.menu, $('.sidebar-menu'), 1);
 
 				$('.sidebar-head').on('click', function() {
+
 	            if ($(this).find('i').hasClass('glyphicon-menu-left')) {
 	                $(this).find('i').removeClass('glyphicon-menu-left').addClass('glyphicon-menu-hamburger')
 	                $('.content').css('margin-left', '0px');
@@ -182,6 +183,11 @@
 
 	            }
 
+                $('.easyui-tabs').tabs({
+                        width:$(".easyui-tabs").parent().width()
+                    });
+
+
 
 		    })
 
@@ -189,13 +195,14 @@
 		    	if($(this).find('.right-icon').hasClass('glyphicon-menu-right')){
 		    		$(this).find('.right-icon').removeClass('glyphicon-menu-right').addClass('glyphicon-menu-down');
 		    		$(this).parent().find('>.treeview').css('display','block');
+                    
 
 		    	}
 		    	else{
 		    		$(this).find('.right-icon').removeClass('glyphicon-menu-down').addClass('glyphicon-menu-right');
 		    		$(this).parent().find('>.treeview').css('display','none');
 		    	}
-
+                
 		    })
 
 		}
