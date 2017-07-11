@@ -217,6 +217,11 @@ h1{
     float: right;
 }
 
+.right-nav li{
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
 .right-nav a{
 	display: inline-block;
 	line-height: 50px;
@@ -225,7 +230,7 @@ h1{
 	padding: 0 10px;
 }
 
-.right-nav a i{
+.right-nav  i{
 	padding-right: 10px;
 }
 
@@ -275,7 +280,7 @@ h1{
 }
 
  .user  .user-action{
-    padding: 0 40px;
+    padding: 0 20px;
 }
 
  .user  .user-action i{
