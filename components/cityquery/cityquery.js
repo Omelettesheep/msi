@@ -1,48 +1,6 @@
 ;
 (function($,window,document,undefined){
     var myPluginName = 'cityQueryPlugin';
-    
-   
-
-    // var data1 = [
-    //         {
-    //             province:'江苏',
-    //             children:[
-    //                 {
-    //                     city:"常州",
-    //                     children:[{
-    //                         area:'天宁区'
-    //                     },
-    //                     {
-    //                         area:'钟楼区'
-    //                     }
-    //                     ]
-    //                 }
-    //             ]
-    //         },
-    //         {
-    //             province:'北京',
-    //             children:[
-    //                 {
-    //                     city:"北京1",
-    //                     children:[{
-    //                         area:'海淀'
-    //                     },{
-    //                         area:'朝阳'
-    //                     }]
-    //                 },
-    //                 {
-    //                     city:"北京2",
-    //                     children:[{
-    //                         area:'海淀'
-    //                     },{
-    //                         area:'朝阳'
-    //                     }]
-    //                 }
-    //             ]
-    //         }
-    //     ]
-
     var fieldName = {
         province:{
             textField:'name',
@@ -63,6 +21,11 @@
         data:[],
         url:'../mockdata/city.json',
         fieldName:fieldName,
+        callback:function(provinceId,provinceName,cityId,cityName,areaId,areaName){
+            console.log('province = ',provinceId,provinceName);
+            console.log('city = ',cityId,cityName);
+            console.log('area = ',areaId,areaName);
+        }
 
 
     }
@@ -85,7 +48,7 @@
             }
             var _this = this;
             $.getJSON(_this.settings.url, function(data) {
-                 _this.settings.data = data;
+                _this.settings.data = data;
                 _this.cityStr+='<div class="city"><label for="province">省</label><input id="province" name="province" /><label for="city">市</label><input id="city" name="city" /><label for="area">区</label><input id="area" name="area" /></div>'    
                 _this.appendElement();
             })
@@ -104,6 +67,7 @@
             var data1 = this.settings.data;
             var fieldName = this.settings.fieldName;
             var result = this.result;
+            var _this = this;
             
             $('#province').combobox({
                 width:100,
@@ -112,6 +76,7 @@
                 data:data1,
 
                 onSelect:function(province){
+                    // console.log($('#province').combobox('getValue').fieldName.province.valueField);
                     $('#city').combobox('clear');
                     $('#area').combobox('clear');
                     $('#city').combobox('loadData', province.city);
@@ -137,7 +102,14 @@
                 valueField: fieldName.area.valueField,
                 textField:  fieldName.area.textField,
                 onSelect:function(area){
-                    result = $('#province').val()+","+$('#city').val()+","+area.area
+                    var provinceId = $('#province').val();
+                    var provinceName = $('#province').combobox('getText')
+                    var cityId = $('#city').val();
+                    var cityName = $('#city').combobox('getText')
+                    var areaId = area[fieldName.area.valueField]
+                    var areaName = area[fieldName.area.textField]
+                  
+                    _this.settings.callback(provinceId,provinceName,cityId,cityName,areaId,areaName);
                     
                 }
             });
@@ -149,7 +121,7 @@
     }
 
 
-    $.fn[myPluginName] = function(options,callback) {
+    $.fn[myPluginName] = function(options) {
         var obj = new cotrPlugin(this, options);
     }
     

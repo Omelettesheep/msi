@@ -182,10 +182,13 @@
 	            	$('.sidebar-menu').show();
 
 	            }
-
-                $('.easyui-tabs').tabs({
+                
+                if($('.easyui-tabs').length>0){
+                    $('.easyui-tabs').tabs({
                         width:$(".easyui-tabs").parent().width()
                     });
+                }
+                
 
 
 

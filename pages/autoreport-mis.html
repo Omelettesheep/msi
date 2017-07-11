@@ -214,55 +214,67 @@
 
 
 <script>
-$('.city-box').cityQueryPlugin();
+$('.city-box').cityQueryPlugin({
+    url:"../mockdata/city_data.json",
+    fieldName:{
+         province:{
+            textField:'name',
+            valueField:'id'
+        },
+        city:{
+            textField:'name',
+            valueField:'id'
+        },
+        area:{
+            textField:'name',
+            valueField:'id'
+        }
+
+    }
+});
 $('.content').headerPlugin();
 $('.content').sidebarPlugin({
     defaultIcon:'glyphicon glyphicon-list-alt'
 });
-var data1 = [
-{
-    province:'江苏',
-    children:[
-        {
-            shi:"常州",
-            children:[{
-                qu:'天宁区'
-            },
-            {
-                qu:'钟楼区'
-            }
-            ]
-        }
-    ]
-},
-{
-    province:'北京',
-    children:[
-        {
-            shi:"北京1",
-            children:[{
-                qu:'海淀'
-            },{
-                qu:'朝阳'
-            }]
-        },
-        {
-            shi:"北京2",
-            children:[{
-                qu:'海淀'
-            },{
-                qu:'朝阳'
-            }]
-        }
-    ]
-}
-]
+// var data1 = [
+// {
+//     province:'江苏',
+//     children:[
+//         {
+//             shi:"常州",
+//             children:[{
+//                 qu:'天宁区'
+//             },
+//             {
+//                 qu:'钟楼区'
+//             }
+//             ]
+//         }
+//     ]
+// },
+// {
+//     province:'北京',
+//     children:[
+//         {
+//             shi:"北京1",
+//             children:[{
+//                 qu:'海淀'
+//             },{
+//                 qu:'朝阳'
+//             }]
+//         },
+//         {
+//             shi:"北京2",
+//             children:[{
+//                 qu:'海淀'
+//             },{
+//                 qu:'朝阳'
+//             }]
+//         }
+//     ]
+// }
+// ]
 
-var data2 = [
-        {
-            shi:"北京"
-        }
-    ]
 </script>
 
 </html>

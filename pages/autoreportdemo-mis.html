@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>易车AutoReport</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src='https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/bootstrap-datetimepicker.min.css">
+    <script src="../js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
+</head>
+<style>
+.box-body {
+    /*height: 100vh;*/
+}
+
+.report-form {
+    padding-left: 40px;
+}
+
+.report-form .form-group {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.report-form .form-group label {
+    display: inline-block;
+    width: 150px;
+}
+
+.report-form .form-group .drop-panel-btn {
+    /*height: 15px;*/
+    margin-right: 15px;
+    height: 34px;
+    width: 120px;
+    position: relative;
+}
+
+.report-form .drop-panel {
+    color: black;
+    display: none;
+    width: 400px;
+    /* height: 200px;*/
+    background: #f4f6f9;
+    border: 1px solid #ddd;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    padding: 10px;
+    z-index: 1;
+    font-size: 12px;
+}
+
+.report-form .drop-panel label {
+    width: auto;
+}
+
+.report-form .drop-panel .group {
+    margin-top: 10px;
+}
+
+.report-form .drop-panel .group:after {
+    display: block;
+    clear: both;
+    content: " ";
+}
+
+.report-form .drop-panel .radio {
+    padding-right: 10px;
+}
+
+.report-form .drop-panel .group .title {
+    display: block;
+    border-bottom: 1px solid black;
+}
+
+.report-form .drop-panel .group ul li {
+    display: inline-block;
+    float: left;
+    padding: 5px 15px 5px 5px;
+}
+
+.report-form .drop-panel .group span {
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.report-form .drop-panel .group-btn {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.report-form .drop-panel .group input[type=button] {
+    height: 25px;
+    font-size: 12px;
+}
+
+.report-form .quota-group .drop-panel .group li:first-child {
+    width: 100%;
+}
+
+.report-show {
+    margin: 35px 40px;
+    display: none;
+}
+
+.report-show .report-preview{
+    display: none;
+}
+
+.report-show .report-show-list {
+    background-color: #f4f6f9;
+    border-radius: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.report-show .report-show-list li {
+    display: inline;
+    float: left;
+    padding: 5px 20px 5px 5px;
+    height: 35px;
+}
+
+.report-show span.title {
+    font-weight: bold;
+}
+
+.report-show .report-show-list li a {
+    cursor: pointer;
+}
+
+.report-show .report-show-list li:last-child {
+    float: right;
+}
+
+.report-show .report-show-list:after {
+    display: block;
+    clear: both;
+    content: " ";
+}
+
+.report-show .table-report th,tr,td{
+    text-align: center;
+}
+</style>
+
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="col-md-12">
+                <div class="box box-danger">
+                    <div class="box-body">
+                        <form class="form-inline report-form">
+                            <div class="form-group type-group">
+                                <label for="carTypeRadios">请选择报表类型:</label>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="carTypeRadios" id="optionsRadios1" value="option1" checked "/> 车型页面数据报表
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="carTypeRadios" id="optionsRadios1" value="option1" checked "/> 页面数据报表
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group time-group">
+                                <label for="carTypeRadios ">请选择报表日期:</label>
+                                <input size="16 " type="text " id="datetimeStart " readonly class="form_datetime" />
+                                <span>--</span>
+                                <input size="16 " type="text " id="datetimeEnd " readonly class="form_datetime" />
+                            </div>
+                            <div class="form-group content-group">
+                                <label for="carTypeRadios ">报表内容定制:</label>
+                                <a class="btn btn-primary drop-panel-btn ">
+                                    <span>栏目选择</span>
+                                    <div class="drop-panel ">
+                                        <div class="group">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" />全选
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />全站汇总
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="group">
+                                            <span class="title ">栏目</span>
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>车型</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>图片</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>视频</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>文章</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>测评</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>车型</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>图片</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>视频</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>文章</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>测评</span></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="group">
+                                            <span class="title">页面</span>
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>首页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>车型栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>图片栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>视频栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>文章栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>测评栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>导购栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>报价栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>降价栏目页</span></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="group group-btn">
+                                            <input type="button" class="btn btn-default panel-cancel" value="取消">
+                                            <input type="button" class="btn btn-primary" value="确认">
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="btn btn-primary drop-panel-btn ">
+                                    <span>车薪页面选择</span>
+                                    <div class="drop-panel ">
+                                        <div class="group">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" />单一车型页
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />报价结果搜索页
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />单一车型概述页
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="group group-btn">
+                                            <input type="button" class="btn btn-default panel-cancel" value="取消">
+                                            <input type="button" class="btn btn-primary" value="确认">
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="btn btn-primary drop-panel-btn ">
+                                    <span>车型选择</span>
+                                    <div class="drop-panel ">
+                                    </div>
+                                </a>
+                                <a class="btn btn-primary drop-panel-btn ">
+                                    <span>区域选择</span>
+                                    <div class="drop-panel ">
+                                        <div class="group">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" />全选
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />汇总
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="group">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>北京</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>辽宁</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>上海</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>四川</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>安徽</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>湖北</span></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="group group-btn">
+                                            <input type="button" class="btn btn-default panel-cancel" value="取消">
+                                            <input type="button" class="btn btn-primary" value="确认">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="form-group quota-group ">
+                                <label for="carTypeRadios ">报表指标定制:</label>
+                                <a class="btn btn-primary drop-panel-btn ">
+                                    <span>指标选择</span>
+                                    <div class="drop-panel ">
+                                        <div class="group">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>全选</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>pv</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>uv</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"><span>平均访问时长</span></label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="group group-btn">
+                                            <input type="button" class="btn btn-default panel-cancel" value="取消">
+                                            <input type="button" class="btn btn-primary" value="确认">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="form-group ">
+                                <input type="button" class="btn btn-warning generate-report" value="生成报表">
+                            </div>
+                        </form>
+                        <div class="report-show">
+                            <ul class="report-show-list">
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <span class="title">2017-07-07车型页面报表</span>
+                                    <a class="preview">预览</a>
+                                    <a class="download">下载</a>
+                                </li>
+                                <li>
+                                    <a class="download-all">下载全部</a>
+                                </li>
+                            </ul>
+                            <hr class="devider devider-dotted">
+                            <div class="report-preview">
+                                <span class="title">报表预览</span>
+                                <div class="preview-table">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-report table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="1" class="info">页面名称</th>
+                                                    <th colspan="1" class="info" >日期</th>
+                                                    <th colspan="1" class="info" >车型</th>
+                                                    <th colspan="1" class="info" >省份</th>
+                                                    <th colspan="1" class="success">pv</th>
+                                                    <th colspan="1" class="success">uv</th>
+                                                    <th colspan="1" class="success">平均访问时长</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row" class="danger">报表结果搜索页</th>
+                                                    <td>2017.07.07-2017.07.10</td>
+                                                    <td>suv</td>
+                                                    <td>北京</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="danger">单一车型</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="danger">单一车型-综述页</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="warning">单一车型-图片</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="warning">单一车型-参数</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="warning">单一车型-视频</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="danger">单一车型图片浏览页</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="danger">单一车型论坛页</th>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src='../components/header/header.js'></script>
+<script src='../components/sidebar/sidebar.js'></script>
+<script>
+var dropPanelBtnHeight = $('.drop-panel-btn').outerHeight();
+$('.drop-panel').css('top', dropPanelBtnHeight + 2);
+
+$('.drop-panel-btn').on('click', function() {
+    $(this).find('.drop-panel').toggle('slow');
+})
+
+$('.drop-panel').on('click', function(e) {
+    e.stopPropagation();
+})
+
+$('.panel-cancel').on('click', function() {
+    $(this).parent().parent().hide('slow');
+})
+
+$('.content').headerPlugin({
+    systemName: '易车 Auto Report PC平台'
+});
+$('.content').sidebarPlugin({
+    defaultIcon: 'glyphicon glyphicon-list-alt',
+    menu: [{
+        'menu-name': '报表展示',
+        'url': '#'
+    }]
+
+});
+
+
+$("#datetimeStart ").datetimepicker({
+    format: 'yyyy-mm-dd',
+    minView: 'month',
+    language: 'zh-CN',
+    autoclose: true,
+    startDate: new Date()
+}).on("click ", function() {
+    $("#datetimeStart ").datetimepicker("setEndDate ", $("#datetimeEnd ").val())
+});
+
+$("#datetimeEnd ").datetimepicker({
+    format: 'yyyy-mm-dd',
+    minView: 'month',
+    language: 'zh-CN',
+    autoclose: true,
+    startDate: new Date()
+}).on("click ", function() {
+    $("#datetimeEnd ").datetimepicker("setStartDate ", $("#datetimeStart ").val())
+});
+
+$('.generate-report').on('click', function() {
+    $('.report-show').toggle();
+})
+
+$('a.preview').on('click',function(){
+    $('.report-preview').show();
+
+})
+</script>
+
+</html>
