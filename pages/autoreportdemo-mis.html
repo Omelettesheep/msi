@@ -15,7 +15,7 @@
     <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript" src="../js/dateRange.js"></script>
     <link rel="stylesheet" type"text/css" href="../css/dateRange.css"/>
-    <link rel="stylesheet" href="../css/report.css">
+    <link rel="stylesheet" href="../css/report.css"> 
 
 
 <body>
@@ -32,12 +32,14 @@
                                 <label for="carTypeRadios">请选择报表类型:</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="reportTypeRadios" id="carTypeReport" value="carTypeReport" /> 车型页面数据报表
+                                        <input type="radio" name="reportTypeRadios" id="carTypeReport" value="carTypeReport" /> 
+                                        <span>车型页面数据报表</span>
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="reportTypeRadios" id="channelTypeReport" value="channelTypeReport" /> 栏目页面数据报表
+                                        <input type="radio" name="reportTypeRadios" id="channelTypeReport" value="channelTypeReport" />
+                                        <span>栏目页面数据报表</span>
                                     </label>
                                 </div>
                             </div>
@@ -61,12 +63,12 @@
                                         <div class="group">
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" class="selectAll" />全选
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" class="selectAll" /><span>全选</span>
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" class="selectConclusion"/>全站汇总
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" class="selectConclusion"/><span>全站汇总</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -232,21 +234,21 @@
                                         <div class="group search-group">
                                              <input type="text" placeholder="请搜索车型" class="search-input">
                                              <ul class="search-list">
-                                                 <li data-value='span'>span</li>
+                                                <!--  <li data-value='span'>span</li>
                                                  <li data-value='td'>腾达</li>
                                                  <li data-value='ad'>奥迪</li>
-                                                 <li data-value='pc'>奔驰</li>
+                                                 <li data-value='pc'>奔驰</li> -->
                                              </ul>
                                         </div>
                                         <div class="group">
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="cartype-select-radio" id="select-all " class="selectAll" value='allcars'/>全部车型
+                                                    <input type="radio" name="cartype-select-radio" id="select-all " class="selectAll" value='allcars'/><span>全部车型</span>
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="cartype-select-radio" id="select-conclusion" value="selectConclusion" />汇总
+                                                    <input type="radio" name="cartype-select-radio" id="select-conclusion" value="selectConclusion" /><span>汇总</span>
                                                 </label>
                                             </div>
                                             
@@ -255,7 +257,7 @@
                                             <label class="selected-label">已选</label>
                                             <ul class="selected-tabs">
                                                 <!-- <li><span>路虎</span><a>x</a></li> -->
-                                                <li><span class="delete-content">腾达</span><span class="delete-icon">x</span></li>
+                                                <!-- <li><span class="delete-content">腾达</span><span class="delete-icon">x</span></li> -->
                                             </ul>
                                         </div>
                                         <div class="group group-btn">
@@ -270,12 +272,12 @@
                                         <div class="group">
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" class="selectAll"/>全选
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" class="selectAll"/><span>全选</span>
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="selectConclusion" value="selectConclusion" class="selectConclusion" />汇总
+                                                    <input type="radio" name="channel-select-top" id="selectConclusion" value="selectConclusion" class="selectConclusion" /><span>汇总</span>
                                                 </label>
                                             </div>
                                         </div>
@@ -547,7 +549,13 @@
 <script src='../components/sidebar/sidebar.js'></script>
 <script>
 var result = {},//最终变量
-    resportRes = "",//报表类型临时变量
+    reportType = [],
+    column = [],
+    page = [],
+    carpage = [],
+    cartype = [],
+    area = [],
+
     dateRes = {},//时间信息
     channelRes = {},
     carpageRes = {},
@@ -627,7 +635,7 @@ $.each(page,function(index,item){
         var carPageStr = [
             '<div class="radio">',
                 '<label>',
-                    '<input type="radio" name="carpage" value="'+item.id+'" />'+item.name,
+                    '<input type="radio" name="carpage" value="'+item.id+'" /><span>'+item.name+'</span>',
                 '</label>',
             '</div>'
         ]
@@ -653,7 +661,7 @@ $.each(page,function(index,item){
     })
 
     $.each(metric,function(index,item){
-        console.log(item);
+        
 
     var metricStr = [
         '<li>',
@@ -674,6 +682,7 @@ $.each(page,function(index,item){
 
 //请选择报表类型的业务逻辑处理
 $('input[name=reportTypeRadios]').on('change',function(){
+    reportType = [];
     var reportTypeResult = $('input[name=reportTypeRadios]:checked').val();
     if((reportTypeResult) == 'carTypeReport'){
         $('.channel-select').hide();
@@ -688,59 +697,131 @@ $('input[name=reportTypeRadios]').on('change',function(){
         $('.channel-select').show();
         $('.car-page-select, .car-select').show();
     }
-    resportRes = $(this).val();//获取报表类型
+    reportType.push({
+        name:$(this).parent().find('span').html(),
+        id:$(this).val()
+    })
+    console.log(reportType)
 })
 
 $('.group-btn .panel-confirm').on('click',function(){
     var btnName = $(this).data('name').split('-')[0];
     switch(btnName){
         case "area":{
-            areaRes.radio = "";
-            areaRes.children = [];
-            var radioValue = $(this).parents('.drop-panel').find('input[type=radio]:checked').val();
-            areaRes.radio = radioValue;
-            $(this).parents('.drop-panel').find('.checkbox input[name=area]:checked').each(function(){
-                areaRes.children.push($(this).val());
-            })
-            if(!areaRes.radio && areaRes.children.length == 0){
+            area = [];
+            
+            var radioValue = $(this).parents('.drop-panel').find('input[type=radio]:checked').siblings('span').html();
+            if(radioValue&&radioValue.indexOf('汇总')>-1){
+                area.push({
+                    name:'汇总',
+                    id:'999'
+                })
+            }
+            else{
+                $(this).parents('.drop-panel').find('.checkbox input[name=area]:checked').each(function(){
+                    area.push({
+                        name:$(this).siblings('span').html(),
+                        id:$(this).val()
+                    })
+                })
+            }
+            
+            if(area.length == 0){
                 alert('未选择区域');
                 return;
             }
             
-            console.log(areaRes);
+            console.log(area);
             $(this).parents('.drop-panel').hide();
             break;
         };
         case "channel":{
-            alert("channel");
+            column = [];
+            page = [];
+            var radioValue = $(this).parents('.drop-panel').find('input[type=radio]:checked').siblings('span').html();
+            if(radioValue&&radioValue.indexOf('汇总')>-1){
+                column.push({
+                    name:'汇总',
+                    id:'999'
+                });
+                page.push({
+                    name:'汇总',
+                    id:'999'
+                })
+            }
+            else{
+                    $(this).parents('.drop-panel').find('.checkbox input[name=column]:checked').each(function(){
+                    column.push({
+                        name:$(this).parent().find('span').html(),
+                        id:$(this).val()
+                    });
+                })
+
+                    $(this).parents('.drop-panel').find('.checkbox input[name=page]:checked').each(function(){
+                    page.push({
+                        name:$(this).parent().find('span').html(),
+                        id:$(this).val()
+                    });
+                })
+            }
+            if(column.length == 0&&page.length ==0){
+                alert('未选择栏目！');
+                return;
+            }
+            console.log(column);
+            console.log(page);
+            $(this).parents('.drop-panel').hide();
             break;
 
         };
         case "cartype":{
-            cartypeRes.radio = "";
-            cartypeRes.children = [];
-            cartypeRes.radio = $(this).parents('.drop-panel').find('input[type=radio]:checked').val();
-            $(this).parents('.drop-panel').find('.selected-tabs li').each(function(){
-                cartypeRes.children.push($(this).find('span').data('value'));
+            carType = [];
+            var radioValue = $(this).parents('.drop-panel').find('input[type=radio]:checked').siblings('span').html();
+            if(radioValue&&radioValue.indexOf('全部')>-1){
+                carType.push({
+                    name:'全部车型',
+                    id:1
+                })
+            }
+            else if(radioValue&&radioValue.indexOf('汇总')>-1){
 
-            })
-            if(!cartypeRes.radio && cartypeRes.children.length == 0){
-                alert('未选择车型');
+                carType.push({
+                    name:'汇总',
+                    id:999
+                })
+
+            }
+            else{
+                $(this).parents('.drop-panel').find('.selected-tabs li').each(function(){
+                    carType.push({
+                        name:$(this).find('.delete-content').html(),
+                        id:$(this).find('.delete-content').data('value')
+                    })
+                })
+
+            }
+            if(carType.length==0){
+                alert('未选择车型！')
                 return;
             }
-            console.log(cartypeRes);
+            console.log(carType)
             $(this).parents('.drop-panel').hide();
             break;
 
         };
         case "carpage":{
-            carpageRes.radio = "";
-            carpageRes.radio = $(this).parents('.drop-panel').find('input[type=radio]:checked').val();
-            if(!carpageRes.radio){
-                alert('未选择车型页面');
+            carpage = [];
+            var radioName = $(this).parents('.drop-panel').find('input[type=radio]:checked').siblings('span').html();
+            var radioValue = $(this).parents('.drop-panel').find('input[type=radio]:checked').val()
+            if(!radioValue){
+                alert('未选择车型页面!');
                 return;
             }
-            console.log(carpageRes);
+            carpage.push({
+                name:radioName,
+                id:radioValue
+            })
+            console.log(carpage);
             $(this).parents('.drop-panel').hide();
 
             break;
@@ -756,7 +837,7 @@ $('.group-btn .panel-confirm').on('click',function(){
                 quotaRes.children.push($(this).val());
 
             })
-            console.log(quotaRes);
+           
             $(this).parents('.drop-panel').hide();
 
             break;
@@ -777,14 +858,25 @@ $('.group').on('change','.radio input',function(){
         $(this).parents('.drop-panel').find('.checkbox input').removeAttr("checked");
     }
     else if(radioValue =='allcars'){
-        $(this).parents('.drop-panel').find('.selected-tabs li').remove();
-        $(this).parents('.drop-panel').find('.search-input').val('全部2000款车型')
-        var tabStr = '<li><span class="delete-content">'+'全部2000款车型'+'</span><span class="delete-icon">x</span></li>'
-        $(this).parents('.drop-panel').find('.selected-tabs').append(tabStr);
+        
     }
 
 })
 
+$('.radio input[name=cartype-select-radio]').on('change',function(){
+    var radioValue = $(this).val();
+    if(radioValue=='allcars'){
+        $(this).parents('.drop-panel').find('.selected-tabs li').remove();
+        $(this).parents('.drop-panel').find('.search-input').val('全部2000款车型')
+        var tabStr = '<li><span class="delete-content all-cars">'+'全部2000款车型'+'</span><span class="delete-icon">x</span></li>'
+        $(this).parents('.drop-panel').find('.selected-tabs').append(tabStr);
+    }
+    else{
+         $(this).parents('.drop-panel').find('.selected-tabs li').remove();
+         $(this).parents('.drop-panel').find('.search-input').val('')
+    }
+
+})
 
 //点击checkbox的时候去掉radio的选择
 $('.checkbox input').on('click',function(){
@@ -867,9 +959,22 @@ function debounce(fn, delay) {
 }
 
 function submit(){
+
     var searchInfo =  $('.search-input').val();
+    $('.search-list').html('');
     if(searchInfo == '') return;
-    alert(searchInfo);
+    alert(1);
+    $.getJSON('../mockdata/search-demo.json',function(data){
+        var searchRes = data.result;
+        $.each(searchRes,function(index,item){
+            var searchStr = [
+                '<li data-value='+item.id+'>'+item.name+'</li>'
+            ]
+            $('.search-list').append(searchStr.join(''));
+        })
+
+    })
+    
 }
 
 $('.search-input').on('input',debounce(submit,500))
@@ -892,12 +997,14 @@ $('.search-input').on('input',debounce(submit,500))
 //点击list，将选中的按钮放入tab
 $('.search-list').on('click','li',function(){
     // console.log($(this).html(),$(this).index());
+    $(this).parents('.drop-panel').find('input[type=radio]').prop('checked',false);
+    $('.selected-tabs .all-cars').parent().remove();
     var value = $(this).data('value');
     var tabStr = '';
     tabStr+='<li><span class="delete-content" data-value='+value+'>'+$(this).html()+'</span><span class="delete-icon">x</span></li>'
     $('.selected-tabs').append(tabStr);
     $('.search-input').val($(this).html());
-    $(this).parent().remove();
+    $(this).parent().html('');
     
    
 })
@@ -905,7 +1012,7 @@ $('.search-list').on('click','li',function(){
 
 //点击tab的x按钮删除x
 $('.selected-tabs').on('click','li span.delete-icon',function(){
-    if($(this).html().indexOf('全部')){
+    if($(this).html().indexOf('全部')>-1){
        $(this).parents('.drop-panel').find('.radio input').prop('checked',false)
        $(this).parents('.drop-panel').find('.search-input').val("");
     }

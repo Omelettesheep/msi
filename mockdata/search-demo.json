@@ -1,0 +1,18 @@
+{
+  "code": 0,
+  "msg": "",
+  "result": [
+    {
+      "name": "奥迪",
+      "id": "aodi"
+    },
+    {
+      "name": "奥拓",
+      "id": "cartypepage"
+    },
+    {
+      "name":"奥特曼",
+      "id":"automan"
+    }
+  ]
+}
