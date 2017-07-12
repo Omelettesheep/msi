@@ -1,0 +1,91 @@
+{
+    "code": 0,
+    "msg":"",
+    "result":{
+        "data": {
+             "column": [
+                {
+                  "name": "车型",
+                  "id": "cartype"
+                },
+                {
+                  "name": "图片",
+                  "id": "picture"
+                }
+              ],
+              "page": [
+                {
+                  "name": "首页",
+                  "id": "home"
+                },
+                {
+                  "name": "车型栏目",
+                  "id": "cartypepage"
+                }
+              ],
+            "channel":[
+                {
+                    "name":"栏目",
+                    "id":"channel",
+                    "children":[
+                        {
+                            "name":"车型",
+                            "id":"cartype"
+                        },
+                        {
+                            "name":"图片",
+                            "id":"picture"
+                        }
+                    ]
+                },
+                {
+                    "name":"页面",
+                    "id":"pages",
+                    "children":[
+                        {
+                            "name":"首页",
+                            "id":"homepage"
+                        },
+                        {
+                            "name":"车型栏目",
+                            "id":"cartypepage"
+                        }
+                    ]
+                }
+            ],
+            "carpage":[
+                {
+                    "name":"单一车型页面",
+                    "id":"carpage1"
+                },{
+                    "name":"报价结果搜索页",
+                    "id":"carpage2"
+                },{
+                    "name":"单一车型概述",
+                    "id":"carpage3"
+                }
+            ]
+            ,
+            "area":[
+                {
+                    "name":"北京",
+                    "id":"10001"
+                },{
+                    "name":"沈阳",
+                    "id":"10002"
+                }
+            ]
+            ,
+            "metric":[
+                {
+                    "name":"pv",
+                    "id":"pv"
+                },
+                {
+                    "name":"uv",
+                    "id":"uv"
+                }
+            ]
+        }
+    }
+}

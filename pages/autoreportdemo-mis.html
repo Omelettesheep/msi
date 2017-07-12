@@ -15,158 +15,8 @@
     <script src="../js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript" src="../js/dateRange.js"></script>
     <link rel="stylesheet" type"text/css" href="../css/dateRange.css"/>
-<style>
-.box-body {
-    /*height: 100vh;*/
-}
+    <link rel="stylesheet" href="../css/report.css">
 
-.report-form {
-    padding-left: 40px;
-}
-
-.report-form .form-group {
-    display: block;
-    margin-bottom: 20px;
-}
-
-.report-form .form-group:after {
-   display: block;
-   content: " ";
-   clear: both;
-}
-
-
-.report-form .form-group label {
-    display: inline-block;
-    width: 150px;
-}
-
-.report-form .form-group .drop-panel-btn {
-    /*height: 15px;*/
-    margin-right: 15px;
-    height: 34px;
-    width: 120px;
-    position: relative;
-}
-
-.report-form .drop-panel {
-    color: black;
-    display: none;
-    width: 400px;
-    /* height: 200px;*/
-    background: #f4f6f9;
-    border: 1px solid #ddd;
-    position: absolute;
-    left: 0;
-    text-align: left;
-    padding: 10px;
-    z-index: 1;
-    font-size: 12px;
-}
-
-.report-form .drop-panel label {
-    width: auto;
-}
-
-.report-form .drop-panel .group {
-    margin-top: 10px;
-}
-
-.report-form .drop-panel .group:after {
-    display: block;
-    clear: both;
-    content: " ";
-}
-
-.report-form .drop-panel .radio {
-    padding-right: 10px;
-}
-
-.report-form .drop-panel .group .title {
-    display: block;
-    border-bottom: 1px solid black;
-}
-
-.report-form .drop-panel .group ul li {
-    display: inline-block;
-    float: left;
-    padding: 5px 15px 5px 5px;
-}
-
-.report-form .drop-panel .group span {
-    display: inline-block;
-    margin-left: 2px;
-}
-
-.report-form .drop-panel .group-btn {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.report-form .drop-panel .group input[type=button] {
-    height: 25px;
-    font-size: 12px;
-}
-
-.report-form .quota-group .drop-panel .group li:first-child {
-    width: 100%;
-}
-
-.report-show {
-    margin: 35px 40px;
-    display: none;
-}
-
-.report-show .report-preview{
-    margin-top: 20px;
-    display: none;
-}
-
-.report-show .report-show-list {
-    background-color: #f4f6f9;
-    border-radius: 5px;
-    border-bottom: 1px solid #eee;
-}
-
-.report-show .report-show-list li {
-    display: inline;
-    float: left;
-    padding: 5px 20px 5px 5px;
-    height: 35px;
-}
-
-.report-show span.title {
-    font-weight: bold;
-}
-
-.report-show .report-show-list li a {
-    cursor: pointer;
-}
-
-.report-show .report-show-list li:last-child {
-    float: right;
-}
-
-.report-show .report-show-list:after {
-    display: block;
-    clear: both;
-    content: " ";
-}
-
-.report-show .table-report th,tr,td{
-    text-align: center;
-}
-
-.ta_date{
-    float: none;
-    width: 218px;
-    display: inline-block;
-}
-
-.ta_calendar_cont{
-    height: 180px;
-}
-</style>
 
 <body>
     <div class="wrapper">
@@ -182,12 +32,12 @@
                                 <label for="carTypeRadios">请选择报表类型:</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="carTypeRadios" id="optionsRadios1" value="option1" checked "/> 车型页面数据报表
+                                        <input type="radio" name="reportTypeRadios" id="carTypeReport" value="carTypeReport" /> 车型页面数据报表
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="carTypeRadios" id="optionsRadios1" value="option1" checked "/> 页面数据报表
+                                        <input type="radio" name="reportTypeRadios" id="channelTypeReport" value="channelTypeReport" /> 栏目页面数据报表
                                     </label>
                                 </div>
                             </div>
@@ -195,42 +45,35 @@
                                 <label for="report-date">请选择报表时间:</label>
 
                                 <div class="ta_date" id="div_date1">
-                    <span class="date_title" id="date1">2012-06-13 至 2012-07-19</span>
-                    <a class="opt_sel" id="input_trigger1" href="#">
-                        <i class="i_orderd"></i>
-                    </a>
-                </div>
-                               <!--  <div class="ta_date" id="div_date1">
-                                    <span class="date_title" id="date1"></span>
+                                    <span class="date_title" id="date1">2012-06-13 至 2012-07-19</span>
                                     <a class="opt_sel" id="input_trigger1" href="#">
-                                        <i class="i_orderd"></i>
+                                    <i class="i_orderd"></i>
                                     </a>
                                 </div>
-                                <div id="datePicker1"></div> -->
                                 
                             </div>
                             
                             <div class="form-group content-group">
                                 <label for="carTypeRadios ">报表内容定制:</label>
-                                <a class="btn btn-primary drop-panel-btn ">
+                                <a class="btn btn-primary drop-panel-btn channel-select">
                                     <span>栏目选择</span>
                                     <div class="drop-panel ">
                                         <div class="group">
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" />全选
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" class="selectAll" />全选
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />全站汇总
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" class="selectConclusion"/>全站汇总
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="group">
+                                        <div class="group group-column">
                                             <span class="title ">栏目</span>
                                             <ul>
-                                                <li>
+                                        <!--        <li>
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox"><span>车型</span></label>
@@ -289,13 +132,13 @@
                                                         <label>
                                                             <input type="checkbox"><span>测评</span></label>
                                                     </div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
-                                        <div class="group">
+                                        <div class="group group-pages">
                                             <span class="title">页面</span>
                                             <ul>
-                                                <li>
+                                               <!--  <li>
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox"><span>首页</span></label>
@@ -348,144 +191,187 @@
                                                         <label>
                                                             <input type="checkbox"><span>降价栏目页</span></label>
                                                     </div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                         <div class="group group-btn">
                                             <input type="button" class="btn btn-default panel-cancel" value="取消">
-                                            <input type="button" class="btn btn-primary" value="确认">
+                                            <input type="button" class="btn btn-primary panel-confirm" data-name="channel-btn" value="确认">
                                         </div>
                                     </div>
                                 </a>
-                                <a class="btn btn-primary drop-panel-btn ">
-                                    <span>车薪页面选择</span>
+                                <a class="btn btn-primary drop-panel-btn car-page-select">
+                                    <span>车型页面选择</span>
                                     <div class="drop-panel ">
-                                        <div class="group">
-                                            <div class="radio">
+                                        <div class="group group-radio">
+                                            <!-- <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" />单一车型页
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="0" />单一车型页
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />报价结果搜索页
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="1" />报价结果搜索页
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />单一车型概述页
+                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="2" />单一车型概述页
                                                 </label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="group group-btn">
                                             <input type="button" class="btn btn-default panel-cancel" value="取消">
-                                            <input type="button" class="btn btn-primary" value="确认">
+                                            <input type="button" class="btn btn-primary panel-confirm" data-name="carpage-btn" value="确认">
                                         </div>
                                     </div>
                                 </a>
-                                <a class="btn btn-primary drop-panel-btn ">
+                                <a class="btn btn-primary drop-panel-btn car-select">
                                     <span>车型选择</span>
                                     <div class="drop-panel ">
+                                        <div class="group search-group">
+                                             <input type="text" placeholder="请搜索车型" class="search-input">
+                                             <ul class="search-list">
+                                                 <li data-value='span'>span</li>
+                                                 <li data-value='td'>腾达</li>
+                                                 <li data-value='ad'>奥迪</li>
+                                                 <li data-value='pc'>奔驰</li>
+                                             </ul>
+                                        </div>
+                                        <div class="group">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="cartype-select-radio" id="select-all " class="selectAll" value='allcars'/>全部车型
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="cartype-select-radio" id="select-conclusion" value="selectConclusion" />汇总
+                                                </label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="group">
+                                            <label class="selected-label">已选</label>
+                                            <ul class="selected-tabs">
+                                                <!-- <li><span>路虎</span><a>x</a></li> -->
+                                                <li><span class="delete-content">腾达</span><span class="delete-icon">x</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="group group-btn">
+                                            <input type="button" class="btn btn-default panel-cancel" value="取消">
+                                            <input type="button" class="btn btn-primary panel-confirm" data-name="cartype-btn" value="确认">
+                                        </div>
                                     </div>
                                 </a>
-                                <a class="btn btn-primary drop-panel-btn ">
+                                <a class="btn btn-primary drop-panel-btn area-select">
                                     <span>区域选择</span>
                                     <div class="drop-panel ">
                                         <div class="group">
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" />全选
+                                                    <input type="radio" name="channel-select-top" id="select-all " value="selectAll" class="selectAll"/>全选
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label>
-                                                    <input type="radio" name="channel-select-top" id="select-conclusion" value="selectConclusion" />汇总
+                                                    <input type="radio" name="channel-select-top" id="selectConclusion" value="selectConclusion" class="selectConclusion" />汇总
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="group">
+                                        <div class="group group-area">
                                             <ul>
-                                                <li>
+                                                <!-- <li>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox"><span>北京</span></label>
+                                                            <input type="checkbox" name="area" value="bj"><span>北京</span></label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox"><span>辽宁</span></label>
+                                                            <input type="checkbox" name="area" value="ln"><span>辽宁</span></label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox"><span>上海</span></label>
+                                                            <input type="checkbox" name="area" class="sh"><span>上海</span></label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox"><span>四川</span></label>
+                                                            <input type="checkbox" name="area" value="sichuan"><span>四川</span></label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox"><span>安徽</span></label>
+                                                            <input type="checkbox" name="area" value="anhui"><span>安徽</span></label>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox"><span>湖北</span></label>
+                                                            <input type="checkbox" name="area" value="hubei"><span>湖北</span></label>
                                                     </div>
-                                                </li>
+                                                </li> -->
                                             </ul>
                                         </div>
                                         <div class="group group-btn">
                                             <input type="button" class="btn btn-default panel-cancel" value="取消">
-                                            <input type="button" class="btn btn-primary" value="确认">
+                                            <input type="button" class="btn btn-primary panel-confirm" data-name="area-btn"value="确认">
                                         </div>
                                     </div>
                                 </a>
                             </div>
                             <div class="form-group quota-group ">
                                 <label for="carTypeRadios ">报表指标定制:</label>
-                                <a class="btn btn-primary drop-panel-btn ">
+                                <a class="btn btn-primary drop-panel-btn quota-select">
                                     <span>指标选择</span>
                                     <div class="drop-panel ">
                                         <div class="group">
-                                            <ul>
-                                                <li>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"><span>全选</span></label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"><span>pv</span></label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"><span>uv</span></label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"><span>平均访问时长</span></label>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="cartype" id="select-all " value="selectAll" class="selectAll"/>全选
+                                                </label>
+                                            </div>
                                         </div>
+                                        <div class="group group-quota">
+                                         <ul>
+                                               <!--  <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" class="selectAll"><span>全选</span></label>
+                                                    </div>
+                                                </li> -->
+                                               <!--  <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="quota" value="pv"><span>pv</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="quota" value="uv"><span>uv</span></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="quota" value="avg_time"><span>平均访问时长</span></label>
+                                                    </div>
+                                                </li> -->
+                                            </ul>
+                                       
+                                            
+                                        </div>
+                                           
                                         <div class="group group-btn">
                                             <input type="button" class="btn btn-default panel-cancel" value="取消">
-                                            <input type="button" class="btn btn-primary" value="确认">
+                                            <input type="button" class="btn btn-primary panel-confirm" data-name="quota-btn" value="确认">
                                         </div>
                                     </div>
                                 </a>
@@ -660,24 +546,282 @@
 <script src='../components/header/header.js'></script>
 <script src='../components/sidebar/sidebar.js'></script>
 <script>
+var result = {},//最终变量
+    resportRes = "",//报表类型临时变量
+    dateRes = {},//时间信息
+    channelRes = {},
+    carpageRes = {},
+    cartypeRes ={},
+    quotaRes = {},
+    areaRes = {};
+
+$.getJSON("../mockdata/data.json",function(data){
+    console.log(data);
+    var result = data.result;
+    var data = result.data;
+    var channel = data.channel;
+    var carpage = data.carpage;
+    var area = data.area;
+    var metric = data.metric;
+    var column = data.column;
+    var page = data.page;
+
+
+    // $.each(channel,function(index,item){
+    //     var channelArr = [
+    //         '<div class="group">',
+    //             '<span class="title ">'+item.name+'</span>',
+    //             '<ul name='+item.id+'></ul>',
+    //         '</div>'
+    //     ]
+    //     $('a.channel-select').find('.group-btn').before(channelArr.join(''))
+    //     var f_id = item.id;
+    //     $.each(item.children,function(index,item){
+    //         var liArr = [
+    //             '<li>',
+    //                 '<div class="checkbox">',
+    //                 '<label>',
+    //                     '<input type="checkbox" value='+item.id+' name='+f_id+'><span>'+item.name+'</span>',
+    //                 '</label>',
+    //                 '</div>',
+    //             '</li>'
+    //         ]
+    //         $('ul[name='+f_id+']').append(liArr.join(''));
+    //     })
+    // })
+
+
+$.each(column,function(index,item){
+
+    var columnStr = [
+        '<li>',
+            '<div class="checkbox">',
+                '<label>',
+                    '<input type="checkbox" name="column" value="'+item.id+'"><span>'+item.name+'</span>',
+                '</label>',
+            '</div>',
+        '</li>'
+    ]
+
+    $('.channel-select .group-column ul').append(columnStr.join(''));
+
+})
+
+$.each(page,function(index,item){
+
+    var pageStr = [
+        '<li>',
+            '<div class="checkbox">',
+                '<label>',
+                    '<input type="checkbox" name="page" value="'+item.id+'"><span>'+item.name+'</span>',
+                '</label>',
+            '</div>',
+        '</li>'
+    ]
+
+    $('.channel-select .group-pages ul').append(pageStr.join(''));
+
+})
+    $.each(carpage,function(index,item){
+
+        var carPageStr = [
+            '<div class="radio">',
+                '<label>',
+                    '<input type="radio" name="carpage" value="'+item.id+'" />'+item.name,
+                '</label>',
+            '</div>'
+        ]
+
+        $('.car-page-select .group-radio').append(carPageStr.join(''));
+
+    })
+
+    $.each(area,function(index,item){
+
+    var areaStr = [
+        '<li>',
+            '<div class="checkbox">',
+                '<label>',
+                    '<input type="checkbox" name="area" value="'+item.id+'"><span>'+item.name+'</span>',
+                '</label>',
+            '</div>',
+        '</li>'
+    ]
+
+    $('.area-select .group-area ul').append(areaStr.join(''));
+
+    })
+
+    $.each(metric,function(index,item){
+        console.log(item);
+
+    var metricStr = [
+        '<li>',
+            '<div class="checkbox">',
+                '<label>',
+                    '<input type="checkbox" name="quota" value="'+item.id+'"><span>'+item.name+'</span>',
+                '</label>',
+            '</div>',
+        '</li>'
+    ]
+
+    $('.quota-select .group-quota ul').append(metricStr.join(''));
+
+    })
+
+
+})
+
+//请选择报表类型的业务逻辑处理
+$('input[name=reportTypeRadios]').on('change',function(){
+    var reportTypeResult = $('input[name=reportTypeRadios]:checked').val();
+    if((reportTypeResult) == 'carTypeReport'){
+        $('.channel-select').hide();
+        $('.car-page-select, .car-select').show();
+    }
+    else if((reportTypeResult) == 'channelTypeReport'){
+     
+        $('.car-page-select, .car-select').hide();
+        $('.channel-select').show();
+    }
+    else{
+        $('.channel-select').show();
+        $('.car-page-select, .car-select').show();
+    }
+    resportRes = $(this).val();//获取报表类型
+})
+
+$('.group-btn .panel-confirm').on('click',function(){
+    var btnName = $(this).data('name').split('-')[0];
+    switch(btnName){
+        case "area":{
+            areaRes.radio = "";
+            areaRes.children = [];
+            var radioValue = $(this).parents('.drop-panel').find('input[type=radio]:checked').val();
+            areaRes.radio = radioValue;
+            $(this).parents('.drop-panel').find('.checkbox input[name=area]:checked').each(function(){
+                areaRes.children.push($(this).val());
+            })
+            if(!areaRes.radio && areaRes.children.length == 0){
+                alert('未选择区域');
+                return;
+            }
+            
+            console.log(areaRes);
+            $(this).parents('.drop-panel').hide();
+            break;
+        };
+        case "channel":{
+            alert("channel");
+            break;
+
+        };
+        case "cartype":{
+            cartypeRes.radio = "";
+            cartypeRes.children = [];
+            cartypeRes.radio = $(this).parents('.drop-panel').find('input[type=radio]:checked').val();
+            $(this).parents('.drop-panel').find('.selected-tabs li').each(function(){
+                cartypeRes.children.push($(this).find('span').data('value'));
+
+            })
+            if(!cartypeRes.radio && cartypeRes.children.length == 0){
+                alert('未选择车型');
+                return;
+            }
+            console.log(cartypeRes);
+            $(this).parents('.drop-panel').hide();
+            break;
+
+        };
+        case "carpage":{
+            carpageRes.radio = "";
+            carpageRes.radio = $(this).parents('.drop-panel').find('input[type=radio]:checked').val();
+            if(!carpageRes.radio){
+                alert('未选择车型页面');
+                return;
+            }
+            console.log(carpageRes);
+            $(this).parents('.drop-panel').hide();
+
+            break;
+
+        };
+        case "quota":{
+            alert("quota");
+
+            quotaRes.radio = ""
+            quotaRes.children = [];
+            quotaRes.radio = $(this).parents('.drop-panel').find('input[type=radio]:checked').val();
+            $(this).parents('.drop-panel').find('.checkbox input[name=quota]:checked').each(function(){
+                quotaRes.children.push($(this).val());
+
+            })
+            console.log(quotaRes);
+            $(this).parents('.drop-panel').hide();
+
+            break;
+
+        }
+        default:break;
+    }
+    
+})
+
+$('.group').on('change','.radio input',function(){
+    var radioValue = $(this).val();
+    if(radioValue=='selectAll'){
+        $(this).parents('.drop-panel').find('.checkbox input').prop("checked", true);
+        console.log($(this).parents('.drop-panel').find('.checkbox input'));
+    }
+    else if(radioValue=='selectConclusion'){
+        $(this).parents('.drop-panel').find('.checkbox input').removeAttr("checked");
+    }
+    else if(radioValue =='allcars'){
+        $(this).parents('.drop-panel').find('.selected-tabs li').remove();
+        $(this).parents('.drop-panel').find('.search-input').val('全部2000款车型')
+        var tabStr = '<li><span class="delete-content">'+'全部2000款车型'+'</span><span class="delete-icon">x</span></li>'
+        $(this).parents('.drop-panel').find('.selected-tabs').append(tabStr);
+    }
+
+})
+
+
+//点击checkbox的时候去掉radio的选择
+$('.checkbox input').on('click',function(){
+    $(this).parents('.drop-panel').find('.radio input').attr('checked',false);
+})
+
+
+
+//设置下拉面板的高度和定位
 var dropPanelBtnHeight = $('.drop-panel-btn').outerHeight();
 $('.drop-panel').css('top', dropPanelBtnHeight + 2);
 
+
+//点击btn显示面板
 $('.drop-panel-btn').on('click', function() {
-    $(this).find('.drop-panel').toggle('slow');
+    $(this).parents('.content').find('.drop-panel').hide();
+    $(this).find('.drop-panel').toggle();
+
 })
 
+//停止drop-panel的点击影响父元素
 $('.drop-panel').on('click', function(e) {
     e.stopPropagation();
 })
 
+//点击面板上的取消按钮
 $('.panel-cancel').on('click', function() {
-    $(this).parent().parent().hide('slow');
+    $(this).parent().parent().hide();
 })
 
+
+//配置上方菜单栏
 $('.content').headerPlugin({
     systemName: '易车 Auto Report PC平台'
 });
+
+//配置左侧菜单栏
 $('.content').sidebarPlugin({
     defaultIcon: 'glyphicon glyphicon-list-alt',
     menu: [{
@@ -688,36 +832,88 @@ $('.content').sidebarPlugin({
 });
 
 
-$("#datetimeStart ").datetimepicker({
-    format: 'yyyy-mm-dd',
-    minView: 'month',
-    language: 'zh-CN',
-    autoclose: true,
-    startDate: new Date()
-}).on("click ", function() {
-    $("#datetimeStart ").datetimepicker("setEndDate ", $("#datetimeEnd ").val())
-});
-
-$("#datetimeEnd ").datetimepicker({
-    format: 'yyyy-mm-dd',
-    minView: 'month',
-    language: 'zh-CN',
-    autoclose: true,
-    startDate: new Date()
-}).on("click ", function() {
-    $("#datetimeEnd ").datetimepicker("setStartDate ", $("#datetimeStart ").val())
-});
-
+//点击生成报表
 $('.generate-report').on('click', function() {
+
+    result.resportRes = resportRes;
+    result.carpageRes = carpageRes;
+    result.cartypeRes = cartypeRes;
+    console.log(result)
+    //把result用ajax发送给后台
     $('.report-show').toggle();
 })
 
+
+//点击预览显示预览报表
 $('a.preview').on('click',function(){
     $('.report-preview').show();
 
 })
 
+// 将会包装事件的 debounce 函数
+function debounce(fn, delay) {
+  // 维护一个 timer
+  let timer = null;
+  return function() {
+    // 通过 ‘this’ 和 ‘arguments’ 获取函数的作用域和变量
+    let context = this;
+    let args = arguments;
 
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      fn.apply(context, args);
+    }, delay);
+  }
+}
+
+function submit(){
+    var searchInfo =  $('.search-input').val();
+    if(searchInfo == '') return;
+    alert(searchInfo);
+}
+
+$('.search-input').on('input',debounce(submit,500))
+//用户输入的时候需要隔500ms向后台发送一次ajax请求
+// $('.search-input').on('input',function(){
+//     var searchInfo = $(this).val();
+//     // 此处需要将searchinfo的值发到后台，然后渲染list列表
+//     console.log(searchInfo);
+//     debounce(submit,500)
+//     // setTimeout(debounce(),500);
+
+//     function submit(){
+//         alert('需要上传');
+
+//     }
+
+// })
+
+
+//点击list，将选中的按钮放入tab
+$('.search-list').on('click','li',function(){
+    // console.log($(this).html(),$(this).index());
+    var value = $(this).data('value');
+    var tabStr = '';
+    tabStr+='<li><span class="delete-content" data-value='+value+'>'+$(this).html()+'</span><span class="delete-icon">x</span></li>'
+    $('.selected-tabs').append(tabStr);
+    $('.search-input').val($(this).html());
+    $(this).parent().remove();
+    
+   
+})
+
+
+//点击tab的x按钮删除x
+$('.selected-tabs').on('click','li span.delete-icon',function(){
+    if($(this).html().indexOf('全部')){
+       $(this).parents('.drop-panel').find('.radio input').prop('checked',false)
+       $(this).parents('.drop-panel').find('.search-input').val("");
+    }
+    $(this).parent().remove();
+})
+
+
+//时间控件初始化
  var dateRange1 = new pickerDateRange('date1', {
                     dayRangeMax : 15,
                     isTodayValid : true,

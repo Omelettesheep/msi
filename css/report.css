@@ -1,0 +1,199 @@
+
+.box-body {
+    /*height: 100vh;*/
+}
+
+.report-form {
+    padding-left: 40px;
+}
+
+.report-form .form-group {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.report-form .form-group:after {
+   display: block;
+   content: " ";
+   clear: both;
+}
+
+
+.report-form .form-group label {
+    display: inline-block;
+    width: 150px;
+}
+
+.report-form .form-group .drop-panel-btn {
+    /*height: 15px;*/
+    margin-right: 15px;
+    height: 34px;
+    width: 120px;
+    position: relative;
+}
+
+.report-form .drop-panel {
+    color: black;
+    display: none;
+    width: 400px;
+    /* height: 200px;*/
+    background: #f4f6f9;
+    border: 1px solid #ddd;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    padding: 10px;
+    z-index: 1;
+    font-size: 12px;
+}
+
+.report-form .drop-panel label {
+    width: auto;
+}
+
+.report-form .drop-panel .group {
+    margin-top: 10px;
+}
+
+.report-form .drop-panel .group:after {
+    display: block;
+    clear: both;
+    content: " ";
+}
+
+.report-form .drop-panel .radio {
+    padding-right: 10px;
+}
+
+.report-form .drop-panel .group .title {
+    display: block;
+    border-bottom: 1px solid black;
+}
+
+.report-form .drop-panel .group ul li {
+    display: inline-block;
+    float: left;
+    padding: 5px 5px 5px 5px;
+}
+
+.report-form .drop-panel .group.search-group{
+    width: 250px;
+}
+
+.report-form .drop-panel .group .selected-label{
+    display: inline-block;
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+/*.report-form .drop-panel .group .selected-tabs{
+    display: inline-block;
+}
+*/
+.report-form .drop-panel .group .selected-tabs li{
+    background-color: #ddd;
+    cursor: auto;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.report-form .drop-panel .group .search-input{
+    display: inline-block;
+    height: 25px;
+    width: 100%;
+}
+
+.report-form .drop-panel .group .search-list{
+    background-color: white;
+
+}
+.report-form .drop-panel .group .search-list li{
+    float: none;
+    display: block;
+    border:1px solid #eee;
+}
+.report-form .drop-panel .group .search-list li:hover{
+    background-color: #eee;
+}
+.report-form .drop-panel .group span {
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.report-form .drop-panel .group-btn {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.report-form .drop-panel .group span.delete-content{
+    padding-right: 5px;
+}
+
+.report-form .drop-panel .group span.delete-icon{
+    cursor: pointer;
+}
+
+.report-form .drop-panel .group input[type=button] {
+    height: 25px;
+    font-size: 12px;
+}
+
+/*.report-form .quota-group .drop-panel .group li:first-child {
+    width: 100%;
+}*/
+
+.report-show {
+    margin: 35px 40px;
+    display: none;
+}
+
+.report-show .report-preview{
+    margin-top: 20px;
+    display: none;
+}
+
+.report-show .report-show-list {
+    background-color: #f4f6f9;
+    border-radius: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.report-show .report-show-list li {
+    display: inline;
+    float: left;
+    padding: 5px 20px 5px 5px;
+    height: 35px;
+}
+
+.report-show span.title {
+    font-weight: bold;
+}
+
+.report-show .report-show-list li a {
+    cursor: pointer;
+}
+
+.report-show .report-show-list li:last-child {
+    float: right;
+}
+
+.report-show .report-show-list:after {
+    display: block;
+    clear: both;
+    content: " ";
+}
+
+.report-show .table-report th,tr,td{
+    text-align: center;
+}
+
+.ta_date{
+    float: none;
+    width: 218px;
+    display: inline-block;
+}
+
+.ta_calendar_cont{
+    height: 180px;
+}
